@@ -1,0 +1,22 @@
+name: Telegram Bot Live
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # হাতে চালানোর অপশন
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install Libs
+        run: pip install -r requirements.txt
+      - name: Start Bot
+        run: python bot.py
+        
